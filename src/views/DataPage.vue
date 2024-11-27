@@ -5,7 +5,7 @@
         :key="form.id"
         class="form"
     >
-      <h2>{{form.caption}}</h2>
+      <h2>{{ form.caption }}</h2>
       <div
           v-for="field in sortedFields(form.id)"
           :key="field.position"
@@ -15,7 +15,6 @@
           <label v-if="findLabel(field.id)">{{ findLabel(field.id) }}</label>
           <input
               v-model="field.value"
-              class="form-control"
               :class="{ 'is-invalid': errors[form.id]?.[field.id] }"
               :tabindex="computeTabindex(form.tabIndex, field.tabIndex)"
               :required="field.required"
@@ -43,7 +42,8 @@
 
       <div v-if="store.submissionStatus[form.id]" class="status">
         <p v-if="store.submissionStatus[form.id].success" class="text-success">Форма успешно отправлена!</p>
-        <p v-if="JSON.stringify(store.submissionStatus[form.id]) !== '{}' && !store.submissionStatus[form.id].success" class="text-danger">
+        <p v-if="JSON.stringify(store.submissionStatus[form.id]) !== '{}' && !store.submissionStatus[form.id].success"
+           class="text-danger">
           Ошибка при отправке формы: {{ store.submissionStatus[form.id].error }}
         </p>
       </div>
