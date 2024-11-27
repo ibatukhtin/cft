@@ -1,5 +1,6 @@
 <template>
   <div v-if="store.forms.controls" class="forms-grid">
+    <h1>{{store.forms.title}}</h1>
     <form
         v-for="form in sortedForms()"
         :key="form.id"

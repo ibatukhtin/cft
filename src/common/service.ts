@@ -62,6 +62,7 @@ class Service {
 
     const formData = store.forms.controls
       .filter(form => form.parentID === formId || form.id === formId);
+    // Или другая логика подбора полей формы для отправки
 
     try {
       // Комментируем реальное сохранение
@@ -76,7 +77,8 @@ class Service {
       // if (!response.ok) {
       //   throw new Error("Ошибка при отправке данных на сервер.");
       // }
-      console.log(`Форма ${formId} успешно отправлена`, JSON.stringify(formData));
+      console.log(`Форма ${formId} успешно отправлена:`);
+      console.log(JSON.stringify(formData));
       // console.log(`Форма ${formId} успешно отправлена:`, await response.json()); // При реальном fetch
       store.submissionStatus[formId] = { success: true };
       this.saveToLocalStorage(formId);
